@@ -26,10 +26,10 @@ services:
     environment:
       - REDIS_HOST=redis
       - REDIS_PORT=6379
-      - PGUSER=postgres
-      - PGHOST=postgres
-      - PGDATABASE=postgres
-      - PGPASSWORD=postgres_password
+      - PGUSER=radit
+      - PGHOST=multi-docker.ch0tqjfl5ndc.us-west-2.rds.amazonaws.com
+      - PGDATABASE=multi-docker
+      - PGPASSWORD=Radit1234
       - PGPORT=5432
   client:
     stdin_open: true
