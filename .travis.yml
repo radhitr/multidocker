@@ -3,17 +3,18 @@ services:
   - docker
 
 before_install:
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   - docker build -t raditr/react-test -f ./client/Dockerfile.dev ./client
 
 script:
   - docker run -e CI=true radhitr/react-test npm test -- --coverage
 
 after_success:
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   - docker build -t raditr/multi-client ./client
   - docker build -t raditr/multi-nginx ./nginx
   - docker build -t raditr/multi-server ./server
   - docker build -t raditr/multi-worker ./worker
-  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   - docker push raditr/multi-client
   - docker push raditr/multi-nginx
   - docker push raditr/multi-server

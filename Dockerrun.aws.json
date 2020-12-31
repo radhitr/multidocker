@@ -1,0 +1,29 @@
+{
+    "AWSEBDockerrunversion": 2,
+    "containerDefinitions": [
+        {
+            "name": "client",
+            "image": "raditr/multi-client",
+            "hostname": "client",
+            "essential": false
+        },
+        {
+            "name": "worker",
+            "image": "raditr/multi-worker",
+            "hostname": "worker",
+            "essential": false
+        },
+        {
+            "name": "api",
+            "image": "raditr/multi-server",
+            "hostname": "api",
+            "essential": false
+        },
+        {
+            "name": "nginx",
+            "image": "raditr/multi-nginx",
+            "hostname": "nginx",
+            "essential": true
+        }
+    ]
+}
